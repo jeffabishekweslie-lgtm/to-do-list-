@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mission Log — A tactical objective tracker for high-stakes task management with a cinematic dark terminal aesthetic.">
+  <title>MISSION LOG // Objective Tracker</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+</head>
+<body>
+
+  <!-- Vignette Overlay -->
+  <div class="vignette"></div>
+
+  <!-- Main App -->
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__badge">
+        <span>System Online</span>
+      </div>
+      <h1 class="header__title">Mission Log</h1>
+      <p class="header__subtitle">// Tactical Objective Tracker v1.0</p>
+      <div class="header__line"></div>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar" id="stats-bar" aria-label="Objective Statistics">
+      <div class="stat-card stat-card--active">
+        <div class="stat-card__label">Active</div>
+        <div class="stat-card__value" id="stat-active">0</div>
+      </div>
+      <div class="stat-card stat-card--secured">
+        <div class="stat-card__label">Secured</div>
+        <div class="stat-card__value" id="stat-secured">0</div>
+      </div>
+      <div class="stat-card stat-card--redacted">
+        <div class="stat-card__label">Redacted</div>
+        <div class="stat-card__value" id="stat-redacted">0</div>
+      </div>
+    </section>
+
+    <!-- Input Section -->
+    <section class="input-section" aria-label="Deploy New Objective">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          class="input-field"
+          id="objective-input"
+          placeholder="Enter objective designation..."
+          maxlength="200"
+          autocomplete="off"
+          aria-label="Objective text"
+        >
+        <select class="threat-select" id="threat-select" aria-label="Threat level">
+          <option value="green">🟢 Low</option>
+          <option value="amber">🟡 Medium</option>
+          <option value="red" >🔴 Critical</option>
+        </select>
+        <button class="btn-deploy" id="btn-deploy" aria-label="Deploy objective">
+          <span>Deploy</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <nav class="filter-bar" id="filter-bar" aria-label="Filter objectives">
+      <button class="filter-btn filter-btn--active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="secured">Secured</button>
+      <button class="filter-btn" data-filter="green">🟢 Low</button>
+      <button class="filter-btn" data-filter="amber">🟡 Medium</button>
+      <button class="filter-btn" data-filter="red">🔴 Critical</button>
+    </nav>
+
+    <!-- Objectives List -->
+    <main class="objectives-list" id="objectives-list" aria-label="Objectives list">
+      <!-- Objectives rendered here by JS -->
+    </main>
+
+  </div>
+
+  <!-- Terminal Footer -->
+  <footer class="terminal-footer">
+    <div class="terminal-footer__left">
+      MISSION_LOG v1.0 // <span id="footer-timestamp"></span><span class="terminal-footer__cursor"></span>
+    </div>
+    <div class="terminal-footer__right" id="footer-status">
+      STATUS: OPERATIONAL
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
